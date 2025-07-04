@@ -8,6 +8,7 @@ import Home from './views/Home';
 import CrearPublicacion from './views/CrearPublicacion';
 import Detalle from './views/Detalle';
 import Perfil from './views/Perfil';
+import Favoritos from './views/Favoritos';
 import EditarInfo from './views/EditarInfo';
 import Registrar from './views/Registrar';
 import Tienda from './views/Tienda';
