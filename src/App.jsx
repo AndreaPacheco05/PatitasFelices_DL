@@ -15,3 +15,9 @@ import IniciarSesion from './views/IniciarSesion';
 import NotFound from './views/NotFound';
 import { UserContext }  from './context/UsuarioContext';
 import './assets/css/App.css';
+
+const App = () => {
+
+};
+
+export default App;

@@ -1,3 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import '../assets/css/Detalle.css';
+
+const Detalle = () => {
+
+};
+
+export default Detalle;
