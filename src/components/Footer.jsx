@@ -16,7 +16,7 @@ const Footer = () => {
         <a href="">Derechos reservados</a>
       </div>
       <div className="footer-der">
-        <a href="">Logo</a>
+        <img src="" alt="" />
         <a href="">www.patitasfelices.com</a>
       </div>
           </div>
