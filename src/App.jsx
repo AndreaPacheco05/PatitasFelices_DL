@@ -1,24 +1,26 @@
-import React, { useContext } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
-import Categorias from './views/Categorias';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Navbar from './components/Navbar';
+import './App.css'
+import Navbar from './components/Navbar'
+import "bootstrap/dist/css/bootstrap.min.css";
 import Home from './views/Home';
-import CrearPublicacion from './views/CrearPublicacion';
-import Detalle from './views/Detalle';
-import Perfil from './views/Perfil';
-import Favoritos from './views/Favoritos';
-import EditarInfo from './views/EditarInfo';
-import Registrar from './views/Registrar';
-import Tienda from './views/Tienda';
+import Footer from './components/Footer';
 import IniciarSesion from './views/IniciarSesion';
-import NotFound from './views/NotFound';
-import { UserContext }  from './context/UsuarioContext';
-import './assets/css/App.css';
+import Registrar from './views/Registrar';
+import { Route, Routes } from 'react-router-dom';
 
-const App = () => {
 
-};
+function App() {
 
-export default App;
+return (
+    <>
+    <Navbar />
+    <Routes>
+        <Route path='/' element={<Home />}/>
+        <Route path='/login' element={<IniciarSesion />}/>
+        <Route path='/register' element={<Registrar />}/>
+    </Routes>
+    <Footer/>
+    </>
+)
+}
+
+export default App
