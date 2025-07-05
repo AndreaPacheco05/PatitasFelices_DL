@@ -2,6 +2,10 @@ import './App.css'
 import Navbar from './components/Navbar'
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from './views/Home';
+import './App.css'
+import Navbar from './components/Navbar'
+import "bootstrap/dist/css/bootstrap.min.css";
+import Home from './views/Home';
 import Footer from './components/Footer';
 import IniciarSesion from './views/IniciarSesion';
 import Registrar from './views/Registrar';
