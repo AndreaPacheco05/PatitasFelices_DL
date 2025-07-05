@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import '../assets/css/Registrar.css';
-import { UsuarioContext } from '../context/UsuarioContext';
+import { UserContext }  from "../context/UsuarioContext";
 import { useNavigate } from 'react-router-dom';
 
 const Registrar = () => {
-    const { register } = useContext(UsuarioContext);
+    const { register } = useContext(UserContext);
     const navigate = useNavigate();
     const [imagen, setImagen] = useState(null);
     const [email, setEmail] = useState('');
