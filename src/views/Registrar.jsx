@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
 import '../assets/css/Registrar.css';
-import { UserContext } from '../context/UserContext';
+import { UsuarioContext } from '../context/UsuarioContext';
 import { useNavigate } from 'react-router-dom';
 
 const Registrar = () => {
-    const { register } = useContext(UserContext);
+    const { register } = useContext(UsuarioContext);
     const navigate = useNavigate();
+    const [imagen, setImagen] = useState(null);
     const [email, setEmail] = useState('');
     const [nombre, setNombre] = useState('');
     const [telefono, setTelefono] = useState('');
@@ -47,93 +48,102 @@ const Registrar = () => {
     
     return (
     <div className="registrar-container">
-        <h3>REGISTRAR</h3>
-        <form onSubmit={handleSubmit}>
+    <h3>REGISTRAR</h3>
+        <div>
             <div className="mb-3">
-                <label htmlFor="email" className="form-label">Correo</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    className="form-reg" 
-                    placeholder="usuario@gamil.com" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    
-                />
+                <label className="form-img">Foto de perfil</label>
+                <input type="file" accept="image/*" onChange={(e) => setImagen(e.target.files[0])} />
             </div>
-            <div className="mb-3">
-                <label htmlFor="nombre" className="form-label">Nombre Completo</label>
-                <input 
-                    type="text" 
-                    id="nombre" 
-                    className="form-reg" 
-                    placeholder="Pedro Pascal" 
-                    value={nombre} 
-                    onChange={(e) => setNombre(e.target.value)}
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="telefono" className="form-label">Teléfono</label>
-                <input 
-                    type="tel" 
-                    id="telefono" 
-                    className="form-reg" 
-                    placeholder="+56 9 12345678" 
-                    value={telefono} 
-                    onChange={(e) => setTelefono(e.target.value)}
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="direccion" className="form-label">Dirección</label>
-                <input
-                    type="text" 
-                    id="direccion" 
-                    className="form-reg" 
-                    placeholder="Av. Siempre Viva 123" 
-                    value={direccion} 
-                    onChange={(e) => setDireccion(e.target.value)}
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="contraseña" className="form-label">Contraseña</label>
-                <input
-                    type="contraseña" 
-                    id="contraseña" 
-                    className="form-reg" 
-                    placeholder="***********" 
-                    value={contraseña} 
-                    onChange={(e) => setContraseña(e.target.value)}
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="confirmarContraseña" className="form-label">Repetir Contraseña</label>
-                <input
-                    type="contraseña" 
-                    id="confirmarPassword" 
-                    className="form-reg" 
-                    placeholder="***********" 
-                    value={confirmarContraseña} 
-                    onChange={(e) => setConfirmarContraseña(e.target.value)}
-                />
-            </div>
+        </div>
 
-            <div className="not-bot">
-                <input
-                    type="checkbox" 
-                    id="robot" 
-                    checked={robot} 
-                    onChange={setRobot(e.target.checked)}
-                />
-                <label htmlFor="robot">No soy un robot</label>
-            </div>
-    
-        {error && <div className="error">{error}</div>}
-    
-        <button type="submit" className="btn">Registrarse</button>
-    
-        <p className="link"> Si ya estás registrado, <a href="/login">ingresa aquí</a></p>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                    <label htmlFor="email" className="form-label">Correo</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        className="form-reg" 
+                        placeholder="usuario@gamil.com" 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="nombre" className="form-label">Nombre Completo</label>
+                    <input 
+                        type="text" 
+                        id="nombre" 
+                        className="form-reg" 
+                        placeholder="Pedro Pascal" 
+                        value={nombre} 
+                        onChange={(e) => setNombre(e.target.value)}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="telefono" className="form-label">Teléfono</label>
+                    <input 
+                        type="tel" 
+                        id="telefono" 
+                        className="form-reg" 
+                        placeholder="+56 9 12345678" 
+                        value={telefono} 
+                        onChange={(e) => setTelefono(e.target.value)}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="direccion" className="form-label">Dirección</label>
+                    <input
+                        type="text" 
+                        id="direccion" 
+                        className="form-reg" 
+                        placeholder="Av. Siempre Viva 123" 
+                        value={direccion} 
+                        onChange={(e) => setDireccion(e.target.value)}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="contraseña" className="form-label">Contraseña</label>
+                    <input
+                        type="contraseña" 
+                        id="contraseña" 
+                        className="form-reg" 
+                        placeholder="***********" 
+                        value={contraseña} 
+                        onChange={(e) => setContraseña(e.target.value)}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="confirmarContraseña" className="form-label">Repetir Contraseña</label>
+                    <input
+                        type="contraseña" 
+                        id="confirmarPassword" 
+                        className="form-reg" 
+                        placeholder="***********" 
+                        value={confirmarContraseña} 
+                        onChange={(e) => setConfirmarContraseña(e.target.value)}
+                    />
+                </div>
+
+                <div className="not-bot">
+                    <input
+                        type="checkbox" 
+                        id="robot" 
+                        checked={robot} 
+                        onChange={setRobot(e.target.checked)}
+                    />
+                    <label htmlFor="robot">No soy un robot</label>
+                </div>
         
-        </form>
+            {error && <div className="error">{error}</div>}
+        
+            <button type="submit" className="btn">Registrarse</button>
+        
+            <p className="link"> Si ya estás registrado, <a href="/login">ingresa aquí</a></p>
+            
+            </form>
+        </div>    
     </div>
     );
 };

@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
-import { UserContext } from "../context/UserContext";
+import { UsuarioContext } from "../context/UsuarioContext";
 import { useNavigate } from "react-router-dom";
-import '../assets/css/IniciarSesion.css';
+import '../assets/css/Login.css';
 
-const IniciarSesion = () => {
-    const { login } = useContext(UserContext);
+const Login = () => {
+    const { login } = useContext(UsuarioContext);
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
@@ -89,4 +89,4 @@ const IniciarSesion = () => {
 );
 };
 
-export default IniciarSesion;
+export default Login;
