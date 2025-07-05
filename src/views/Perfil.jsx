@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { UsuarioContext } from "../context/UsuarioContext";
+import { UserContext }  from "../context/UsuarioContext";
 import { useNavigate } from "react-router-dom";
 import '../assets/css/Perfil.css';
 
 const Perfil = () => {
-    const { user } = useContext(UsuarioContext);
+    const { user } = useContext(UserContext);
     const navigate = useNavigate();
 
     if (!user) {

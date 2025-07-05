@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import "../assets/css/Footer.css";
 
 const Footer = () => {
@@ -16,8 +15,8 @@ const Footer = () => {
         <a href="">Derechos reservados</a>
       </div>
       <div className="footer-der">
-        <img src="" alt="" />
-        <a href="">www.patitasfelices.com</a>
+          <img src={null} alt="..." />
+          <a href="">www.patitasfelices.com</a>
       </div>
           </div>
     </footer>
