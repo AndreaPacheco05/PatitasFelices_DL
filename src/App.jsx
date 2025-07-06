@@ -24,11 +24,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route
           path="/login"
-          element={token ? <Login /> : <Navigate to="/" />}
+          element={token ? <Navigate to="/" /> : <Login />}
         />
+
         <Route
           path="/registrar"
-          element={token ? <Registrar /> : <Navigate to="/" />}
+          element={token ? <Navigate to="/" /> : <Registrar />}
         />
         <Route
           path="/perfil"

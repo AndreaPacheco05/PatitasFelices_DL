@@ -1,0 +1,46 @@
+.publicacion-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-publicacion .form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-publicacion input,
+  .form-publicacion textarea,
+  .form-publicacion select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 0.25rem;
+  }
+  
+  .form-publicacion textarea {
+    resize: vertical;
+  }
+  
+  .btn-publicar {
+    background-color: #a57bf4;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .btn-publicar:hover {
+    background-color: #7434e9;
+  }
+  
+  .mensaje {
+    margin-top: 1rem;
+    color: green;
+    font-weight: bold;
+  }
