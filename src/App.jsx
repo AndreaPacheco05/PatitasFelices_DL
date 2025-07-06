@@ -22,13 +22,15 @@ function App() {
       <Categorias />
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route
           path="/login"
-          element={token ? <Login /> : <Navigate to="/" />}
+          element={token ? <Navigate to="/" /> : <Login />}
         />
+
         <Route
           path="/registrar"
-          element={token ? <Registrar /> : <Navigate to="/" />}
+          element={token ? <Navigate to="/" /> : <Registrar />}
         />
         <Route
           path="/perfil"
@@ -42,6 +44,7 @@ function App() {
           path="/tienda"
           element={token ? <Tienda /> : <Navigate to="/" />}
         />
+
         <Route
           path="/crearPublicacion"
           element={token ? <CrearPublicacion /> : <Navigate to="/" />}
