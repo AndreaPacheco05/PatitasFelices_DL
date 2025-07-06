@@ -1,5 +1,6 @@
 main{
     text-align: center;
+    
 }
 .cardContainer{
     display: flex;
@@ -8,4 +9,29 @@ main{
     align-items: flex-start;
     justify-content: flex-start;
     padding: 3em;
+}
+
+.botones-container{
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.boton-card{    
+    background-color: #a57bf4;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #a57bf4;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 7px 10px;
+}
+
+.boton-card:hover{
+    background-color: #9665f3;
+
 }
