@@ -1,11 +1,11 @@
-const categorias =[
+const categorias = [
   {
     id: 1,
     nombre: "Alimento",
     ruta: "/categoria/alimento",
     imagen:
       "https://images.pexels.com/photos/5731863/pexels-photo-5731863.jpeg",
-    desc: "lorem",
+    desc: "orem ipsum dolor sit amet, consectetur adipisicing elit. Neque excepturi dolorum aspernatur in officia deleniti suscipit voluptate, accusantium dolores, alias explicabo modi consequatur, consectetur libero! Aspernatur, voluptatibus id? Facere, eligendi",
     precio: 9000,
   },
   {
@@ -14,7 +14,7 @@ const categorias =[
     ruta: "/categoria/juguetes",
     imagen:
       "https://images.pexels.com/photos/3777622/pexels-photo-3777622.jpeg",
-    desc: "lorem",
+    desc: "orem ipsum dolor sit amet, consectetur adipisicing elit. Neque excepturi dolorum aspernatur in officia deleniti suscipit voluptate, accusantium dolores, alias explicabo modi consequatur, consectetur libero! Aspernatur, voluptatibus id? Facere, eligendi",
     precio: 9000,
   },
   {
@@ -23,7 +23,7 @@ const categorias =[
     ruta: "/categoria/ropa",
     imagen:
       "https://images.pexels.com/photos/4587997/pexels-photo-4587997.jpeg",
-    desc: "lorem",
+    desc: "orem ipsum dolor sit amet, consectetur adipisicing elit. Neque excepturi dolorum aspernatur in officia deleniti suscipit voluptate, accusantium dolores, alias explicabo modi consequatur, consectetur libero! Aspernatur, voluptatibus id? Facere, eligendi",
     precio: 9000,
   },
   {
@@ -32,7 +32,7 @@ const categorias =[
     ruta: "/categoria/camas",
     imagen:
       "https://images.pexels.com/photos/5731863/pexels-photo-5731863.jpeg",
-    desc: "lorem",
+    desc: "orem ipsum dolor sit amet, consectetur adipisicing elit. Neque excepturi dolorum aspernatur in officia deleniti suscipit voluptate, accusantium dolores, alias explicabo modi consequatur, consectetur libero! Aspernatur, voluptatibus id? Facere, eligendi",
     precio: 9000,
   },
   {
@@ -41,7 +41,7 @@ const categorias =[
     ruta: "/categoria/higiene",
     imagen:
       "https://images.pexels.com/photos/3777622/pexels-photo-3777622.jpeg",
-    desc: "lorem",
+    desc: "orem ipsum dolor sit amet, consectetur adipisicing elit. Neque excepturi dolorum aspernatur in officia deleniti suscipit voluptate, accusantium dolores, alias explicabo modi consequatur, consectetur libero! Aspernatur, voluptatibus id? Facere, eligendi",
     precio: 9000,
   },
   {
@@ -50,7 +50,7 @@ const categorias =[
     ruta: "/categoria/otros",
     imagen:
       "https://images.pexels.com/photos/4587997/pexels-photo-4587997.jpeg",
-    desc: "lorem",
+    desc: "orem ipsum dolor sit amet, consectetur adipisicing elit. Neque excepturi dolorum aspernatur in officia deleniti suscipit voluptate, accusantium dolores, alias explicabo modi consequatur, consectetur libero! Aspernatur, voluptatibus id? Facere, eligendi",
     precio: 9000,
   },
 ];

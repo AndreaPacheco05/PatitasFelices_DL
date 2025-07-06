@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import '../assets/css/Detalle.css';
 import cardsData from "../pages/cardsData";
 const Detalle = () => {
@@ -11,17 +11,23 @@ const Detalle = () => {
     }
 
     return (
-        <main>
-            <div className="main-container">
-            <div className="detallesContainer">
-            <h2>{producto.nombre}</h2>
-            <img src={producto.imagen} alt="" />
-            <p>Descripción: {producto.desc}</p>
-            <p>Precio: {producto.precio}</p>
-            </div>
-            </div>
+ 
+        <main class="producto-detalles">
+          <div class="producto-imagen">
+            <img src={producto.imagen} alt={producto.nombre} />
+          </div>
+          <div class="producto-info">
+                <h1 class="producto-nombre">{producto.nombre}</h1>
+            <p class="producto-desc">
+              {producto.desc}
+            </p>
+                <p class="producto-precio">${producto.precio}</p>
+                <Link to={`/chat/`}>
+                <button class="boton-compra">Comprar ahora</button>
+                </Link>
+          </div>
         </main>
-    )
+    );
 };
 
 export default Detalle;
