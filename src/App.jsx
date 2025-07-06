@@ -41,15 +41,15 @@ function App() {
         />
         <Route
           path="/tienda"
-          element={token ? <Tienda /> : <Navigate to="/" />}
+          element={!token ? <Tienda /> : <Navigate to="/" />}
         />
         <Route
           path="/crearPublicacion"
-          element={token ? <CrearPublicacion /> : <Navigate to="/" />}
+          element={!token ? <CrearPublicacion /> : <Navigate to="/" />}
         />
         <Route
-          path="/detalle"
-          element={token ? <Detalle /> : <Navigate to="/" />}
+          path="/detalle/:id"
+          element={!token ? <Detalle /> : <Navigate to="/" />}
         />
         <Route
           path="/favoritos"

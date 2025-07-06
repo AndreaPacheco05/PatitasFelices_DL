@@ -130,7 +130,7 @@ const Registrar = () => {
               Repetir Contraseña
             </label>
             <input
-              type="contraseña"
+              type="password"
               id="confirmarPassword"
               className="form-reg"
               placeholder="***********"

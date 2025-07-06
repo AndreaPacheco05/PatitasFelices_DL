@@ -1,0 +1,11 @@
+main{
+    text-align: center;
+}
+.cardContainer{
+    display: flex;
+    gap: 3em;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 3em;
+}
