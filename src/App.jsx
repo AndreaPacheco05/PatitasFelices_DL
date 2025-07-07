@@ -53,7 +53,7 @@ function App() {
         />
         <Route
           path="/favoritos"
-          element={token ? <Favoritos /> : <Navigate to="/" />}
+          element={!token ? <Favoritos /> : <Navigate to="/" />}
         />
         <Route path="*" element={<NotFound />} />
       </Routes>

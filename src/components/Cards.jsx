@@ -2,11 +2,15 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import "../assets/css/Tienda.css";
-
+import { useContext } from 'react';
+import { FavoritosContext } from '../context/FavoritosContext';
 
 function Cards({ nombre, imagen, desc, precio, id }) {
+    const {agregarFavorito} = useContext(FavoritosContext)
     
-    function favFunction() {
+  function favFunction() {
+        console.log("agregando:", {nombre, imagen, desc, precio, id})
+        agregarFavorito({nombre, imagen, desc, precio, id})
         alert("Se guardó en favoritos")
     }
   return (
