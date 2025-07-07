@@ -1,97 +1,114 @@
 import React, { useState } from "react";
 import "../assets/css/CrearPublicacion.css";
 
+const categorias = [
+  "Alimento",
+  "Juguetes",
+  "Ropa",
+  "Camas",
+  "Higiene",
+  "Otros",
+];
+
 const CrearPublicacion = () => {
-  const [imagen, setImagen] = useState(null);
   const [titulo, setTitulo] = useState("");
   const [descripcion, setDescripcion] = useState("");
+  const [categoria, setCategoria] = useState(categorias[0]);
   const [precio, setPrecio] = useState("");
-  const [categoria, setCategoria] = useState("otros");
-  const [mensaje, setMensaje] = useState("");
+  const [imagen, setImagen] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const [error, setError] = useState("");
+
+  const handleImagenChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImagen(file);
+      setPreview(URL.createObjectURL(file));
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!titulo || !descripcion || !precio || !imagen) {
-      setMensaje("Por favor completa todos los campos.");
+    if (!titulo || !descripcion || !precio) {
+      setError("Por favor, completa todos los campos obligatorios.");
       return;
     }
-
-    console.log({
-      titulo,
-      descripcion,
-      precio,
-      categoria,
-      imagen,
-    });
-
-    setMensaje("¡Publicación creada con éxito!");
+    setError("");
+    // Aquí iría el envío a backend
+    alert("Publicación creada con éxito!");
+    // Reset form
     setTitulo("");
     setDescripcion("");
+    setCategoria(categorias[0]);
     setPrecio("");
-    setCategoria("otros");
     setImagen(null);
+    setPreview(null);
   };
 
   return (
-    <div className="publicacion-container">
-      <h2>Crear Publicación</h2>
-      <form onSubmit={handleSubmit} className="form-publicacion">
-        <div className="form-group">
-          <label>Título</label>
+    <div className="crear-publicacion-container">
+      <h2>Crear Nueva Publicación</h2>
+      <form className="crear-publicacion-form" onSubmit={handleSubmit}>
+        <label>
+          Título <span className="obligatorio">*</span>
           <input
             type="text"
             value={titulo}
             onChange={(e) => setTitulo(e.target.value)}
-            placeholder="Ej: Zapatillas Nike"
+            placeholder="Ej: Collar Reflectante para perros"
           />
-        </div>
+        </label>
 
-        <div className="form-group">
-          <label>Descripción</label>
+        <label>
+          Descripción <span className="obligatorio">*</span>
           <textarea
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
-            placeholder="Escribe una descripción detallada..."
-          ></textarea>
-        </div>
-
-        <div className="form-group">
-          <label>Precio</label>
-          <input
-            type="number"
-            value={precio}
-            onChange={(e) => setPrecio(e.target.value)}
-            placeholder="Ej: 19990"
+            placeholder="Describe el producto..."
+            rows={4}
           />
-        </div>
+        </label>
 
-        <div className="form-group">
-          <label>Categoría</label>
+        <label>
+          Categoría
           <select
             value={categoria}
             onChange={(e) => setCategoria(e.target.value)}
           >
-            <option value="ropa">Ropa</option>
-            <option value="tecnologia">Tecnología</option>
-            <option value="hogar">Hogar</option>
-            <option value="accesorios">Accesorios</option>
-            <option value="otros">Otros</option>
+            {categorias.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
           </select>
-        </div>
-        <div className="form-group">
-          <label>Foto del producto</label>
+        </label>
+
+        <label>
+          Precio (CLP) <span className="obligatorio">*</span>
           <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setImagen(e.target.files[0])}
+            type="number"
+            value={precio}
+            onChange={(e) => setPrecio(e.target.value)}
+            placeholder="Ej: 15000"
+            min="0"
           />
-        </div>
+        </label>
 
-        {mensaje && <p className="mensaje">{mensaje}</p>}
+        <label className="input-imagen-label">
+          Imagen
+          <input type="file" accept="image/*" onChange={handleImagenChange} />
+        </label>
 
-        <button type="submit" className="btn-publicar">
-          Publicar
+        {preview && (
+          <div className="preview-imagen">
+            <img src={preview} alt="Preview" />
+          </div>
+        )}
+
+        {error && <p className="error">{error}</p>}
+
+        <button type="submit" className="btn-crear">
+          Crear Publicación
         </button>
       </form>
     </div>

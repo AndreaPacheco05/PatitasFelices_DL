@@ -161,7 +161,7 @@ main {
 }
 
 .btn-comprar {
-  background-color: #ff6f61;
+  background-color: #6cc6ac;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -179,7 +179,7 @@ main {
 .destacados h2 {
   font-size: 26px;
   margin-bottom: 20px;
-  color: #3f51b5;
+  color: #754668;
 }
 
 .destacados-grid {
@@ -226,4 +226,52 @@ main {
   display: flex;
   justify-content: center;
   gap: 2px;
+}
+
+.que-es-patitas {
+  background: #cda2b4;
+  padding: 60px 20px;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 1100px;
+  margin: auto;
+  gap: 40px;
+}
+
+.texto {
+  flex: 1;
+  min-width: 280px;
+}
+
+.texto h2 {
+  font-size: 30px;
+  color: #754668;
+  margin-bottom: 20px;
+}
+
+
+
+.texto p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.imagen {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+}
+
+.imagen img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }

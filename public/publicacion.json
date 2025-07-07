@@ -1,0 +1,95 @@
+{
+    "carruselImagenes": [
+      {
+        "url": "https://images.pexels.com/photos/5731863/pexels-photo-5731863.jpeg",
+        "alt": "Descuentos en alimento"
+      },
+      {
+        "url": "https://images.pexels.com/photos/3777622/pexels-photo-3777622.jpeg",
+        "alt": "Camas para tu mascota"
+      },
+      {
+        "url": "https://images.pexels.com/photos/4587997/pexels-photo-4587997.jpeg",
+        "alt": "Productos de higiene"
+      }
+    ],
+    "categorias": [
+      {
+        "nombre": "Alimento",
+        "ruta": "/categoria/alimento",
+        "imagen": "https://images.pexels.com/photos/5731863/pexels-photo-5731863.jpeg"
+      },
+      {
+        "nombre": "Juguetes",
+        "ruta": "/categoria/juguetes",
+        "imagen": "https://images.pexels.com/photos/3777622/pexels-photo-3777622.jpeg"
+      },
+      {
+        "nombre": "Ropa",
+        "ruta": "/categoria/ropa",
+        "imagen": "https://images.pexels.com/photos/4587997/pexels-photo-4587997.jpeg"
+      },
+      {
+        "nombre": "Camas",
+        "ruta": "/categoria/camas",
+        "imagen": "https://images.pexels.com/photos/5731863/pexels-photo-5731863.jpeg"
+      },
+      {
+        "nombre": "Higiene",
+        "ruta": "/categoria/higiene",
+        "imagen": "https://images.pexels.com/photos/3777622/pexels-photo-3777622.jpeg"
+      },
+      {
+        "nombre": "Otros",
+        "ruta": "/categoria/otros",
+        "imagen": "https://images.pexels.com/photos/4587997/pexels-photo-4587997.jpeg"
+      }
+    ],
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "Collar Reflectante",
+        "precioOriginal": 8000,
+        "precioDescuento": 5990,
+        "imagen": "https://images.pexels.com/photos/5731863/pexels-photo-5731863.jpeg"
+      },
+      {
+        "id": 2,
+        "nombre": "Rascador de Gato",
+        "precioOriginal": 20000,
+        "precioDescuento": 14990,
+        "imagen": "https://images.pexels.com/photos/3777622/pexels-photo-3777622.jpeg"
+      },
+      {
+        "id": 3,
+        "nombre": "Cama para Mascotas",
+        "precioOriginal": 25000,
+        "precioDescuento": 19990,
+        "imagen": "https://images.pexels.com/photos/4587997/pexels-photo-4587997.jpeg"
+      }
+    ],
+    "articulos": [
+      {
+        "id": 1,
+        "nombre": "Arnés Ajustable Premium",
+        "imagen": "https://images.pexels.com/photos/5731863/pexels-photo-5731863.jpeg",
+        "precio": 14990,
+        "rating": 5
+      },
+      {
+        "id": 2,
+        "nombre": "Juguete Interactivo para Gatos",
+        "imagen": "https://images.pexels.com/photos/3777622/pexels-photo-3777622.jpeg",
+        "precio": 6990,
+        "rating": 4
+      },
+      {
+        "id": 3,
+        "nombre": "Plato Antideslizante",
+        "imagen": "https://images.pexels.com/photos/4587997/pexels-photo-4587997.jpeg",
+        "precio": 4990,
+        "rating": 4.5
+      }
+    ]
+  }
+  

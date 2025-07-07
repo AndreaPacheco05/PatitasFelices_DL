@@ -1,4 +1,4 @@
-nav{
+/*nav{
     display: flex;
     background-color: #a57bf4;
     justify-content: space-between;
@@ -21,4 +21,52 @@ nav{
     margin-right: 4em;
     display: flex;
     gap: 3em;
+  }*/
+
+  .navbar-container {
+    background-color: #754668; /* fondo principal */
+    color: #ffffff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f4d07b; /* Amarillo suave */
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+  
+  .navbar a {
+    color: #dacedf; /* lavanda claro */
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar a:hover {
+    color: #cda2b4; /* rosa suave */
+  }
+  
+  .btn-ingresar {
+    background-color: #f36969; /* rosado fuerte */
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-ingresar:hover {
+    background-color: #a57bf4; /* lavanda fuerte */
   }

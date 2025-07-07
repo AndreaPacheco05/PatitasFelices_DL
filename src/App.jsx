@@ -43,7 +43,12 @@ function App() {
           path="/tienda"
           element={!token ? <Tienda /> : <Navigate to="/" />}
         />
-        <Route
+
+        <Route path="/crearPublicacion" element={<CrearPublicacion />} />
+        <Route path="/detalle/:id" element={<Detalle />} />
+        <Route path="/favoritos" element={<Favoritos />} />
+
+        {/* <Route
           path="/crearPublicacion"
           element={!token ? <CrearPublicacion /> : <Navigate to="/" />}
         />
@@ -53,8 +58,8 @@ function App() {
         />
         <Route
           path="/favoritos"
-          element={!token ? <Favoritos /> : <Navigate to="/" />}
-        />
+          element={token ? <Favoritos /> : <Navigate to="/" />}
+        />*/}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

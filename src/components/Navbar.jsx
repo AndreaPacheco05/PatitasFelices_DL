@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../context/UsuarioContext";
-import "../assets/css/Navbar.css"
+import "../assets/css/Navbar.css";
 
 const Navbar = () => {
   const setActiveClass = ({ isActive }) => (isActive ? "active" : undefined);
@@ -9,7 +9,7 @@ const Navbar = () => {
   const { token, logout } = useContext(UserContext);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-ligh">
+    <nav className="navbar navbar-expand-lg navbar-light bg-ligh navbar-container">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           Patitas Felices
@@ -33,7 +33,7 @@ const Navbar = () => {
             <li className="nav-item">
               <NavLink className={setActiveClass} to="/">
                 <button className="btn active" aria-current="page" href="#">
-                  <i className="fa-solid fa-pizza-slice"></i> Home
+                  Home
                 </button>
               </NavLink>
             </li>

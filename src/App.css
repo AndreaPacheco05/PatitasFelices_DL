@@ -2,15 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Poppins, sans-serif;
 }
 main section h2 {
-
   margin-bottom: 0;
   padding: 15px;
 }
 
 main section p {
-    
-    margin-bottom: 0;
-
-};
+  margin-bottom: 0;
+}
