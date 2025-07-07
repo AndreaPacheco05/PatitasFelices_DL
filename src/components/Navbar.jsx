@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../context/UsuarioContext";
+import "../assets/css/Navbar.css"
 
 const Navbar = () => {
   const setActiveClass = ({ isActive }) => (isActive ? "active" : undefined);

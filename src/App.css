@@ -1,5 +1,16 @@
-*{
- margin: 0;
- padding: 0;
- box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+main section h2 {
+
+  margin-bottom: 0;
+  padding: 15px;
+}
+
+main section p {
+    
+    margin-bottom: 0;
+
+};
