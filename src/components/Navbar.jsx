@@ -33,14 +33,24 @@ const Navbar = () => {
                   Registrar
                 </button>
               </NavLink>
+<<<<<<< HEAD
             </>
           ) : (
             <>
+=======
+>>>>>>> 2ec9591 (Versión 0.1.5 (css))
               <NavLink className={setActiveClass} to="/perfil">
                 <button className="btn">
                   Perfil
                 </button>
               </NavLink>
+<<<<<<< HEAD
+=======
+            </>
+          ) : (
+            <>
+              
+>>>>>>> 2ec9591 (Versión 0.1.5 (css))
               <button className="btn" onClick={logout}>
                 Logout
               </button>
