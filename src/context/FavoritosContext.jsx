@@ -11,7 +11,7 @@ const FavoritosProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem("favoritos", JSON.stringify(favoritos));
     }, [favoritos])
-   
+
     const agregarFavorito = (producto) => {
         setFavoritos((prev) => {
             const yaExiste = prev.some((p) => p.id === producto.id);
