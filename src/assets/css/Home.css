@@ -1,5 +1,7 @@
 main {
   min-height: 100vh;
+  width: 100%;
+  padding: 0 8em 0 8em;
 }
 
 .titulo {
@@ -75,29 +77,9 @@ main {
   transform: scale(1.03);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 .espacio {
   margin: 300px;
-}
-
-.somos {
-  text-align: center;
-  padding: 25px 100px 100px 100px;
-}
-
-.centrar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.centrar h2 {
-  padding-top: 50px;
-  text-align: center;
-  font-size: 2rem;
-}
-
-.background-text {
-  background-color: #cda2b4;
 }
 
 .descuentos {
@@ -125,12 +107,8 @@ main {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   padding: 16px;
   width: 220px;
-  transition: transform 0.3s;
 }
 
-.descuento-card:hover {
-  transform: translateY(-5px);
-}
 
 .descuento-card img {
   width: 100%;
@@ -170,8 +148,14 @@ main {
   font-size: 14px;
 }
 
+.btn-comprar:hover {
+  transition: transform 0.5s;
+  transform: translateY(-3px);
+}
+
+
 .destacados {
-  padding: 40px 20px;
+  padding: 0 1em 1em 1em;
   background-color: #f5faff;
   text-align: center;
 }
@@ -191,35 +175,35 @@ main {
 }
 
 .destacado-card {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  padding: 16px;
+  padding: 1em;
   width: 220px;
-  transition: transform 0.3s;
 }
 
 .destacado-card:hover {
+  transition: transform 0.3s;
   transform: translateY(-5px);
 }
 
 .destacado-card img {
   width: 100%;
   border-radius: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 0.5em;
 }
 
 .destacado-card h3 {
-  font-size: 16px;
+  font-size: 1em;
   color: #333;
-  margin-bottom: 8px;
+  margin-bottom: 0.5em;
 }
 
 .precio {
-  font-size: 15px;
+  font-size: 1em;
   color: #4caf50;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 0.5em;
 }
 
 .rating {
@@ -227,3 +211,29 @@ main {
   justify-content: center;
   gap: 2px;
 }
+
+.somos{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 9em 2em 9em;
+  background-color: #f0f8ff;
+}
+
+.centrar {
+  width: 90%;
+  padding: 0 2.5em 0 2.5em;
+  background-color: #ffdddd;
+  border-radius: 2em;
+}
+
+.centrar h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.centrar p {
+  text-align: center;
+  padding-bottom: 1em;
+  text-wrap: balance;
+} 

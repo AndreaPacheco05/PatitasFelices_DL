@@ -91,7 +91,7 @@ const articulos = [
     },
     {
       id: 2,
-      nombre: "Juguete Interactivo para Gatos",
+      nombre: "Juguete Interactivo",
       imagen: "https://images.pexels.com/photos/3777622/pexels-photo-3777622.jpeg",
       precio: 6990,
       rating: 4,
@@ -175,18 +175,16 @@ const Home = () => {
         ))}
       </div>
     </section>
-      <section className="background-text">
+      <section className="somos">
         <div className="centrar">
           <h2>¿Que es Patitas Felices?</h2>
-        </div>
-        <p className="somos">
-          En Patitas Felices creemos que las mascotas son parte de la familia.
+          <p> En Patitas Felices creemos que las mascotas son parte de la familia.
           Por eso, creamos un espacio donde puedas encontrar todo lo que
           necesitan para vivir sanas, amadas y felices. Es un marketplace donde
           se encuentran productos, servicios y personas con un solo propósito:
           mejorar la vida de quienes caminan sobre cuatro patitas (y las de
-          quienes los cuidan con amor).
-        </p>
+          quienes los cuidan con amor). </p>
+        </div>
       </section>
     </main>
   );

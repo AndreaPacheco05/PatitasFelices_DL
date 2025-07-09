@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { UserContext } from "./context/UsuarioContext";
-import { Header, Navbar, Categorias, Footer } from "./pages/index";
+import { Navbar, Categorias, Footer } from "./pages/index";
 import { Home, Login, Registrar, Perfil, NotFound } from "./pages/index";
 import {
   EditarInfo,
@@ -17,7 +17,6 @@ function App() {
   const { token } = useContext(UserContext);
   return (
     <div className="app-container">
-      <Header />
       <Navbar />
       <Categorias />
       <Routes>
@@ -33,11 +32,11 @@ function App() {
         />
         <Route
           path="/perfil"
-          element={token ? <Perfil /> : <Navigate to="/login" />}
+          element={token ? <Perfil /> : <Navigate to="/perfil" />}
         />
         <Route
           path="/editarInfo"
-          element={token ? <EditarInfo /> : <Navigate to="/login" />}
+          element={token ? <EditarInfo /> : <Navigate to="/editarInfo" />}
         />
         <Route
           path="/tienda"
@@ -45,15 +44,15 @@ function App() {
         />
         <Route
           path="/crearPublicacion"
-          element={!token ? <CrearPublicacion /> : <Navigate to="/" />}
+          element={!token ? <CrearPublicacion /> : <Navigate to="/crearPublicaion" />}
         />
         <Route
           path="/detalle/:id"
-          element={!token ? <Detalle /> : <Navigate to="/" />}
+          element={!token ? <Detalle /> : <Navigate to="/detalle/:id" />}
         />
         <Route
           path="/favoritos"
-          element={token ? <Favoritos /> : <Navigate to="/" />}
+          element={token ? <Favoritos /> : <Navigate to="/favoritos" />}
         />
         <Route path="*" element={<NotFound />} />
       </Routes>

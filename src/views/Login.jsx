@@ -52,7 +52,7 @@ const Login = () => {
             type="email"
             id="email"
             className="form-log"
-            placeholder="usuario@email.com"
+            placeholder="usuario@gmail.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -84,12 +84,12 @@ const Login = () => {
 
         {error && <div className="error">{error}</div>}
 
-        <button type="submit" className="btn">
+        <button type="submit" className="btn-log">
           Iniciar sesión
         </button>
 
         <p className="link">
-          Si no estás registrado, <a href="/register">ingrese aquí</a>
+          Si no estás registrado, <a href="/registrar">ingrese aquí</a>
         </p>
       </form>
     </div>
