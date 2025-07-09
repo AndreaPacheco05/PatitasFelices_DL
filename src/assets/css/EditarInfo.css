@@ -1,0 +1,99 @@
+.editar-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #cda2b4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.editar-container h3 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+form {
+    width: 100%;
+}
+
+.box-img-form {
+    display: flex;
+    flex-direction: row;
+    gap: 70px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.rounded-circle {
+    border-radius: 50%;
+    border: 2px solid #a57bf4;
+}
+
+.box-img-form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mb-3 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.form-reg {
+    padding: 6px 10px;
+    border: 1px solid #a57bf4;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: black;
+}
+
+input[type="file"] {
+    margin-top: 10px;
+    color: #000000;
+}
+
+.guardas-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.publicacion-btn {
+    background-color: #f4d07b;
+    color: rgb(0, 0, 0);
+    border: 1px solid #f4d07b;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.publicacion-btn:hover {
+    background-color: #ffc234;
+}
+
+p {
+    font-size: 16px;
+    color: #000000;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.editar-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid #a57bf4;
+}
