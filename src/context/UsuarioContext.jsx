@@ -3,55 +3,55 @@ import { createContext, useState } from "react";
 export const UserContext = createContext({});
 
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(() => localStorage.getItem("user"));
-  const [token, setToken] = useState(() => localStorage.getItem("token"));
-  const [profile, setProfile] = useState(null);
+const [user, setUser] = useState(() => localStorage.getItem("user"));
+const [token, setToken] = useState(() => localStorage.getItem("token"));
+const [profile, setProfile] = useState(null);
 
-  const login = async (email, password) => {
+const login = async (email, password) => {
     let data;
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+    const response = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+        "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email,
-          password,
+        email,
+        password,
         }),
-      });
-      data = await response.json();
+    });
+    data = await response.json();
     } catch (err) {
-      console.error("Hubo un error:", err);
-      alert("Hubo un problema");
-      return;
+    console.error("Hubo un error:", err);
+    alert("Hubo un problema");
+    return;
     }
 
     if (data?.error) {
-      alert(data.error);
+    alert(data.error);
     } else {
       // alert("Authentication successful!");
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", data.email);
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", data.email);
 
-      setToken(data.token);
-      setUser(data.email);
+    setToken(data.token);
+    setUser(data.email);
     }
-  };
+};
 
-  const register = async (email, password) => {
+const register = async (email, password) => {
     let data;
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+    const response = await fetch("http://localhost:5000/api/auth/register", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+        "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email,
-          password,
+        email,
+        password,
         }),
       });
       data = await response.json();

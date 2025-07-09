@@ -1,5 +1,9 @@
+body{
+    min-height: 100vh;
+}
+
 footer {
-  background-color: #0c0122;
+    background-color: #0c0122;
 }
 
 footer a {
