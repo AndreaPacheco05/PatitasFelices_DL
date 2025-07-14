@@ -18,6 +18,7 @@ const CrearPublicacion = () => {
   const [imagen, setImagen] = useState(null);
   const [preview, setPreview] = useState(null);
   const [error, setError] = useState("");
+  const [mensaje, setMensaje] = useState("");
 
   const handleImagenChange = (e) => {
     const file = e.target.files[0];
@@ -29,10 +30,12 @@ const CrearPublicacion = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!titulo || !descripcion || !precio) {
       setError("Por favor, completa todos los campos obligatorios.");
       return;
     }
+
     setError("");
     // Aquí iría el envío a backend
     
@@ -76,6 +79,48 @@ const CrearPublicacion = () => {
     setError(error.message);
   }
 };
+=======
+
+    const formData = new FormData();
+    formData.append("titulo", titulo);
+    formData.append("descripcion", descripcion);
+    formData.append("categoria", categoria);
+    formData.append("precio", precio);
+    if (imagen) {
+      formData.append("imagen", imagen);
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/publicacion", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Error al crear publicación");
+      }
+
+      setMensaje("Publicación creada con éxito!");
+      setError("");
+
+      // Reset form
+      setTitulo("");
+      setDescripcion("");
+      setCategoria(categorias[0]);
+      setPrecio("");
+      setImagen(null);
+      setPreview(null);
+    } catch (err) {
+      console.error("Error:", err);
+      setError(err.message || "Ocurrió un error inesperado.");
+      setMensaje("");
+    }
+  };
 
   return (
     <div className="crear-publicacion-container">
@@ -138,6 +183,7 @@ const CrearPublicacion = () => {
         )}
 
         {error && <p className="error">{error}</p>}
+        {mensaje && <p className="mensaje">{mensaje}</p>}
 
         <button type="submit" className="btn-crear">
           Crear Publicación

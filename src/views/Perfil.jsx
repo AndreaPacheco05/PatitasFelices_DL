@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 import '../assets/css/Perfil.css';
 
 const Perfil = () => {
-    const {profile} = useContext(UserContext);
+    const { perfil, user } = useContext(UserContext);
     const navigate = useNavigate();
-    if (!profile) {
+
+    if (!perfil) {
         return <p>Cargando daatos del usuario...</p>;
     }
+  
     return (
     <div className="perfil-container">
     <h3>Hola, {profile.nombre}</h3>

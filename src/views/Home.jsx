@@ -191,12 +191,14 @@ const Home = () => {
       <section className="somos">
         <div className="centrar">
           <h2>¿Que es Patitas Felices?</h2>
-          <p> En Patitas Felices creemos que las mascotas son parte de la familia.
-          Por eso, creamos un espacio donde puedas encontrar todo lo que
-          necesitan para vivir sanas, amadas y felices. Es un marketplace donde
-          se encuentran productos, servicios y personas con un solo propósito:
-          mejorar la vida de quienes caminan sobre cuatro patitas (y las de
-          quienes los cuidan con amor). </p>
+            <p className="somos">
+              En Patitas Felices creemos que las mascotas son parte de la familia.
+              Por eso, creamos un espacio donde puedas encontrar todo lo que
+              necesitan para vivir sanas, amadas y felices. Es un marketplace donde
+              se encuentran productos, servicios y personas con un solo propósito:
+              mejorar la vida de quienes caminan sobre cuatro patitas (y las de
+              quienes los cuidan con amor).
+            </p>
         </div>
       </section>
     </main>
