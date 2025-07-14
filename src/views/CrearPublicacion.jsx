@@ -27,7 +27,7 @@ const CrearPublicacion = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!titulo || !descripcion || !precio) {
       setError("Por favor, completa todos los campos obligatorios.");
@@ -35,6 +35,35 @@ const CrearPublicacion = () => {
     }
     setError("");
     // Aquí iría el envío a backend
+    
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("No estás autenticado");
+      return;
+    }
+
+    const response = await fetch("http://localhost:3000/api/cards/publicaciones", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        articulos: titulo,
+        descripcion,
+        precio: Number(precio),
+        disponibilidad: true,
+        img_url: "", 
+      }),
+    });
+
+    if (!response.ok) {
+      const errData = await response.json();
+      throw new Error(errData.error || "Error al crear la publicación");
+    }
+
+    const data = await response.json();
     alert("Publicación creada con éxito!");
     // Reset form
     setTitulo("");
@@ -43,7 +72,10 @@ const CrearPublicacion = () => {
     setPrecio("");
     setImagen(null);
     setPreview(null);
-  };
+  } catch (error) {
+    setError(error.message);
+  }
+};
 
   return (
     <div className="crear-publicacion-container">

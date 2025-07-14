@@ -59,7 +59,6 @@ const UserProvider = ({ children }) => {
         }),
       });
       const text = await response.text();
-      console.log("Respuesta cruda del servidor", text);
       try {
         data = JSON.parse(text)
       } catch (e) {
