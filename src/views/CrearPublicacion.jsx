@@ -36,56 +36,11 @@ const CrearPublicacion = () => {
       return;
     }
 
-    setError("");
-    // Aquí iría el envío a backend
-    
-  try {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      setError("No estás autenticado");
-      return;
-    }
-
-    const response = await fetch("http://localhost:3000/api/cards/publicaciones", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        articulos: titulo,
-        descripcion,
-        precio: Number(precio),
-        disponibilidad: true,
-        img_url: "", 
-      }),
-    });
-
-    if (!response.ok) {
-      const errData = await response.json();
-      throw new Error(errData.error || "Error al crear la publicación");
-    }
-
-    const data = await response.json();
-    alert("Publicación creada con éxito!");
-    // Reset form
-    setTitulo("");
-    setDescripcion("");
-    setCategoria(categorias[0]);
-    setPrecio("");
-    setImagen(null);
-    setPreview(null);
-  } catch (error) {
-    setError(error.message);
-  }
-};
-=======
-
     const formData = new FormData();
     formData.append("titulo", titulo);
     formData.append("descripcion", descripcion);
     formData.append("categoria", categoria);
-    formData.append("precio", precio);
+    formData.append("precio", Number(precio)); // importante: asegurar que es número
     if (imagen) {
       formData.append("imagen", imagen);
     }
@@ -133,6 +88,7 @@ const CrearPublicacion = () => {
             value={titulo}
             onChange={(e) => setTitulo(e.target.value)}
             placeholder="Ej: Collar Reflectante para perros"
+            required
           />
         </label>
 
@@ -143,6 +99,7 @@ const CrearPublicacion = () => {
             onChange={(e) => setDescripcion(e.target.value)}
             placeholder="Describe el producto..."
             rows={4}
+            required
           />
         </label>
 
@@ -168,6 +125,7 @@ const CrearPublicacion = () => {
             onChange={(e) => setPrecio(e.target.value)}
             placeholder="Ej: 15000"
             min="0"
+            required
           />
         </label>
 
