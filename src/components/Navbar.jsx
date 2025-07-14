@@ -19,7 +19,6 @@ const Navbar = () => {
             </button>
           </NavLink>
         </div>
-
         <div className="nav-der">
           {!token ? (
             <>
@@ -43,7 +42,7 @@ const Navbar = () => {
               </NavLink>
               <button className="btn" onClick={logout}>
                 Logout
-              </button>
+              </button> 
             </>
           )}
         </div>
