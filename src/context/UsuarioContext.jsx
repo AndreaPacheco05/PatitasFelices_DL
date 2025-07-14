@@ -3,58 +3,70 @@ import { createContext, useEffect, useState } from "react";
 export const UserContext = createContext({});
 
 const UserProvider = ({ children }) => {
-const [user, setUser] = useState(() => localStorage.getItem("user"));
-const [token, setToken] = useState(() => localStorage.getItem("token"));
-const [profile, setProfile] = useState(null);
+  const [user, setUser] = useState(() => localStorage.getItem("user"));
+  const [token, setToken] = useState(() => localStorage.getItem("token"));
+  const [profile, setProfile] = useState(null);
 
-const login = async (email, password) => {
+  const login = async (email, password) => {
     let data;
 
     try {
-    const response = await fetch("http://localhost:3000/api/auth/login", {
+      const response = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
         headers: {
-        "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-        email,
-        password,
-        }),
-    });
-    data = await response.json();
-    } catch (err) {
-    console.error("Hubo un error:", err);
-    alert("Hubo un problema");
-    return;
-    }
-
-    if (data?.error) {
-    alert(data.error);
-    } else {
-      // alert("Authentication successful!");
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("user", data.email);
-
-    setToken(data.token);
-    setUser(data.email);
-    }
-};
-
-const register = async (email, password) => {
-    let data;
-
-    try {
-    const response = await fetch("http://localhost:3000/api/auth/registrar", {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-        email,
-        password,
+          email,
+          password,
         }),
       });
       data = await response.json();
+    } catch (err) {
+      console.error("Hubo un error:", err);
+      alert("Hubo un problema");
+      return;
+    }
+
+    if (data?.error) {
+      alert(data.error);
+    } else {
+      // alert("Authentication successful!");
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", data.email);
+
+      setToken(data.token);
+      setUser(data.email);
+    }
+  };
+
+  const register = async (nombre, email, password, direccion, telefono, imgPerfil_url) => {
+    let data;
+
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/registrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nombre,
+          email,
+          password,
+          direccion,
+          telefono,
+          imgPerfil_url
+        }),
+      });
+      const text = await response.text();
+      console.log("Respuesta cruda del servidor", text);
+      try {
+        data = JSON.parse(text)
+      } catch (e) {
+        console.error("No es un JSON válido", e)
+        alert("La respuesta del servidor no es un JSON válido");
+        return
+      }
     } catch (err) {
       console.error("Hubo un error:", err);
       alert("Hubo un problema");
@@ -97,7 +109,7 @@ const register = async (email, password) => {
   useEffect(() => {
     getProfile()
   }, []) */
- /*  const [prueba, setPrueba] = useState(null); */
+  /*  const [prueba, setPrueba] = useState(null); */
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -106,22 +118,22 @@ const register = async (email, password) => {
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((response) =>{
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
         .then((data) => {
-          console.log("Datos obtenidos", data)
-          setProfile(data)
+         /*  console.log("Datos obtenidos", data); */
+          setProfile(data);
         })
         .catch((error) => {
           console.log("Error en fetch", error);
-          setProfile(null)
+          setProfile(null);
         });
     } else {
-      console.warn("No hay token en localStorage")
+      console.warn("No hay token en localStorage");
     }
   }, []);
 
@@ -137,7 +149,7 @@ const register = async (email, password) => {
         logout,
         register,
         profile,
-       /*  getProfile, */
+        /*  getProfile, */
       }}
     >
       {children}

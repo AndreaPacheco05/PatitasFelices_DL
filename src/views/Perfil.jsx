@@ -6,7 +6,6 @@ import '../assets/css/Perfil.css';
 const Perfil = () => {
     const {profile} = useContext(UserContext);
     const navigate = useNavigate();
-    console.log(profile)
     if (!profile) {
         return <p>Cargando daatos del usuario...</p>;
     }

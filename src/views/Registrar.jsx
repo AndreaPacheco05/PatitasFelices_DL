@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Registrar = () => {
   const { register } = useContext(UserContext);
   const navigate = useNavigate();
-  const [imagen, setImagen] = useState(null);
+  const [imgPerfil_url, setImagen] = useState(null);
   const [email, setEmail] = useState("");
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
@@ -36,7 +36,7 @@ const Registrar = () => {
       return;
     }
 
-    const success = await register(email, contraseña);
+    const success = await register(nombre, email, contraseña, direccion, telefono, imgPerfil_url);
     if (success) {
       navigate("/profile");
     } else {
