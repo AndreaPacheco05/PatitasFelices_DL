@@ -1,6 +1,4 @@
-
 import { createContext, useState, useEffect } from "react";
-
 
 export const UserContext = createContext({});
 
@@ -11,7 +9,6 @@ const UserProvider = ({ children }) => {
     return savedUser ? JSON.parse(savedUser) : null;
   });
   const [profile, setProfile] = useState(null);
-
 
   const login = async (email, password) => {
     try {
@@ -24,7 +21,6 @@ const UserProvider = ({ children }) => {
       });
 
       const data = await response.json();
-
 
       if (response.ok) {
         localStorage.setItem("token", data.token);
@@ -43,7 +39,6 @@ const UserProvider = ({ children }) => {
     }
   };
 
-
   const register = async (email, password, nombre, direccion, telefono, imgperfil_url = null) => {
     try {
       const response = await fetch("http://localhost:5000/api/auth/registrar", {
@@ -61,24 +56,7 @@ const UserProvider = ({ children }) => {
         }),
       });
 
-      const text = await response.text();
-      try {
-        data = JSON.parse(text)
-      } catch (e) {
-        console.error("No es un JSON válido", e)
-        alert("La respuesta del servidor no es un JSON válido");
-        return
-      }
-    } catch (err) {
-      console.error("Hubo un error:", err);
-      alert("Hubo un problema");
-      return;
-    }
-
-
-
       const data = await response.json();
-
 
       if (response.ok) {
         localStorage.setItem("token", data.token);
@@ -97,7 +75,6 @@ const UserProvider = ({ children }) => {
     }
   };
 
-
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -106,23 +83,15 @@ const UserProvider = ({ children }) => {
     setProfile(null);
   };
 
-  /* const getProfile = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/api/auth/me", {
-
-
   const getProfile = async () => {
     try {
       const response = await fetch("http://localhost:5000/api/auth/perfil", {
-
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-
       const data = await response.json();
-
 
       if (response.ok) {
         setProfile(data);
@@ -135,43 +104,10 @@ const UserProvider = ({ children }) => {
       alert("Hubo un problema.");
     }
   };
-  useEffect(() => {
-    getProfile()
-  }, []) */
-  /*  const [prueba, setPrueba] = useState(null); */
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      fetch("http://localhost:3000/api/auth/me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then((data) => {
-         /*  console.log("Datos obtenidos", data); */
-          setProfile(data);
-        })
-        .catch((error) => {
-          console.log("Error en fetch", error);
-          setProfile(null);
-        });
-    } else {
-      console.warn("No hay token en localStorage");
-    }
-  }, []);
-
-  useEffect;
-
 
   const updateUser = async (formData) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/usuarios/${perfil?.id}`, {
+      const response = await fetch(`http://localhost:5000/api/auth/usuarios/${profile?.id}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -179,9 +115,7 @@ const UserProvider = ({ children }) => {
         body: formData,
       });
 
-
       const data = await response.json();
-
 
       if (response.ok) {
         setUser(data);
@@ -197,13 +131,11 @@ const UserProvider = ({ children }) => {
     }
   };
 
-
   useEffect(() => {
     if (token) {
       getProfile();
     }
   }, [token]);
-
 
   return (
     <UserContext.Provider
@@ -213,8 +145,8 @@ const UserProvider = ({ children }) => {
         profile,
         login,
         register,
-        profile
-        /*  getProfile, */
+        logout,
+        updateUser,
       }}
     >
       {children}

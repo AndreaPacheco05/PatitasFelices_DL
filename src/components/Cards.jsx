@@ -9,23 +9,23 @@ function Cards({ nombre, imagen, desc, precio, id }) {
     const {agregarFavorito} = useContext(FavoritosContext)
     
   function favFunction() {
-       fetch("http://localhost:3000/api/cards/favoritos", {
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json",
-           Authorization: `Bearer ${localStorage.getItem("token")}`,
-         },
-         body: JSON.stringify({ articulo_ID: id }),
-       })
-         .then((res) => res.json())
-         .then((data) => {
-           console.log("Favorito agregado:", data);
-           alert("Se guardó en favoritos");
-         })
-         .catch((err) => {
-           console.error("Error al guardar favorito:", err);
-           alert("Hubo un problema al guardar en favoritos");
-         });
+      fetch("http://localhost:3000/api/cards/favoritos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({ articulo_ID: id }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Favorito agregado:", data);
+          alert("Se guardó en favoritos");
+        })
+        .catch((err) => {
+          console.error("Error al guardar favorito:", err);
+          alert("Hubo un problema al guardar en favoritos");
+        });
     }
   return (
     <Card style={{ width: "12rem" }}>
