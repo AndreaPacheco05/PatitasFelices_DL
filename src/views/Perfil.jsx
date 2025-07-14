@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext }  from "../context/UsuarioContext";
 import { useNavigate } from "react-router-dom";
 import '../assets/css/Perfil.css';
@@ -10,14 +10,14 @@ const Perfil = () => {
     if (!perfil) {
         return <p>Cargando daatos del usuario...</p>;
     }
-
+  
     return (
     <div className="perfil-container">
-    <h3>Hola, {user.nombre}</h3>
+    <h3>Hola, {profile.nombre}</h3>
         <div className="box-img-form">
             <div>
                 <img
-                    src={user.imagen}
+                    src={profile.imgPerfil_url}
                     alt="Foto de perfil"
                     className="rounded-circle"
                     width="120"
@@ -25,9 +25,9 @@ const Perfil = () => {
                 />
             </div>
             <div> 
-                <p><strong>Email:</strong> {user.email}</p>
-                <p><strong>Teléfonon:</strong> {user.telefono}</p>
-                <p><strong>Dirección:</strong> {user.direccion}</p>
+                <p><strong>Email:</strong> {profile.email}</p>
+                <p><strong>Teléfono:</strong> {profile.telefono}</p>
+                <p><strong>Dirección:</strong> {profile.direccion}</p>
                 <div>
                     <p>¿Desea modificar su información?</p>
                     <button onClick={() => navigate('/editarInfo')} className="modificar-btn">

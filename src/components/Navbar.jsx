@@ -9,6 +9,43 @@ const Navbar = () => {
   const { token, logout } = useContext(UserContext);
 
   return (
+
+    <nav className="navbar">
+      <div className="navbar-container">
+        <div className="nav-izq">
+          <h1>Patitas Felices</h1>
+          <NavLink className={setActiveClass} to="/">
+            <button className="btn">
+              Home
+            </button>
+          </NavLink>
+        </div>
+        <div className="nav-der">
+          {!token ? (
+            <>
+              <NavLink className={setActiveClass} to="/login">
+                <button className="btn">
+                  Login
+                </button>
+              </NavLink>
+              <NavLink className={setActiveClass} to="/registrar">
+                <button className="btn">
+                  Registrar
+                </button>
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink className={setActiveClass} to="/perfil">
+                <button className="btn">
+                  Perfil
+                </button>
+              </NavLink>
+              <button className="btn" onClick={logout}>
+                Logout
+              </button> 
+            </>
+          )}
     <nav className="navbar navbar-expand-lg navbar-light bg-ligh">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">

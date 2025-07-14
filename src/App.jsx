@@ -41,7 +41,7 @@ function App() {
         />
         <Route
           path="/tienda"
-          element={!token ? <Tienda /> : <Navigate to="/" />}
+          element={token ? <Tienda /> : <Navigate to="/" />}
         />
 
         <Route path="/crearPublicacion" element={<CrearPublicacion />} />

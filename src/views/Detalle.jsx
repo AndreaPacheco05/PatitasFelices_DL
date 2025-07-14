@@ -1,29 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import '../assets/css/Detalle.css';
-import cardsData from "../pages/cardsData";
 const Detalle = () => {
-    const { id } = useParams();
-    const producto = cardsData.find((item) => item.id === parseInt(id));
+  const { id } = useParams();
+  const [producto, setProducto] = useState(null)
+  const [error, setError] = useState("")
+  useEffect(() => {
+    const obtenerProducto = async () => {
+      try {
+        const res = await fetch(
+          `http://localhost:3000/api/cards/publicaciones/${id}`
+        );
+        if (!res.ok) {
+          throw new Error("Producto no encontrado");
+        }
+        const data = await res.json();
+        setProducto(data);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
 
-    if (!producto) {
-        <h2>Producto no encontrado</h2>
-    }
+    obtenerProducto();
+  }, [id]);
 
+  if (error) return <h2>{error}</h2>;
+  if (!producto) return <h2>Cargando producto...</h2>;
     return (
  
-        <main class="producto-detalles">
-          <div class="producto-imagen">
-            <img src={producto.imagen} alt={producto.nombre} />
+        <main className="producto-detalles">
+          <div className="producto-imagen">
+            <img src={producto.img_url} alt={producto.articulos} />
           </div>
-          <div class="producto-info">
-                <h1 class="producto-nombre">{producto.nombre}</h1>
-            <p class="producto-desc">
-              {producto.desc}
+          <div className="producto-info">
+                <h1 className="producto-nombre">{producto.articulos}</h1>
+            <p className="producto-desc">
+              {producto.descripcion}
             </p>
-                <p class="producto-precio">${producto.precio}</p>
+                <p className="producto-precio">${producto.precio}</p>
                 <Link to={`/chat/`}>
-                <button class="boton-compra">Comprar ahora</button>
+                <button className="boton-compra">Comprar ahora</button>
                 </Link>
           </div>
         </main>
