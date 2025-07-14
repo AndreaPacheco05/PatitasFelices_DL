@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext({});
 
@@ -11,7 +11,7 @@ const login = async (email, password) => {
     let data;
 
     try {
-    const response = await fetch("http://localhost:5000/api/auth/login", {
+    const response = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
         headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const register = async (email, password) => {
     let data;
 
     try {
-    const response = await fetch("http://localhost:5000/api/auth/register", {
+    const response = await fetch("http://localhost:3000/api/auth/registrar", {
         method: "POST",
         headers: {
         "Content-Type": "application/json",
@@ -79,9 +79,9 @@ const register = async (email, password) => {
     setUser(null);
   };
 
-  const getProfile = async () => {
+  /* const getProfile = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/me", {
+      const response = await fetch("http://localhost:3000/api/auth/me", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -94,6 +94,38 @@ const register = async (email, password) => {
       return;
     }
   };
+  useEffect(() => {
+    getProfile()
+  }, []) */
+ /*  const [prueba, setPrueba] = useState(null); */
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetch("http://localhost:3000/api/auth/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) =>{
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+        .then((data) => {
+          console.log("Datos obtenidos", data)
+          setProfile(data)
+        })
+        .catch((error) => {
+          console.log("Error en fetch", error);
+          setProfile(null)
+        });
+    } else {
+      console.warn("No hay token en localStorage")
+    }
+  }, []);
+
+  useEffect;
 
   return (
     <UserContext.Provider
@@ -105,7 +137,7 @@ const register = async (email, password) => {
         logout,
         register,
         profile,
-        getProfile,
+       /*  getProfile, */
       }}
     >
       {children}
