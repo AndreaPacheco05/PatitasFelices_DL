@@ -3,76 +3,59 @@ import { createContext, useEffect, useState } from "react";
 export const UserContext = createContext({});
 
 const UserProvider = ({ children }) => {
-const [user, setUser] = useState(() => localStorage.getItem("user"));
-const [token, setToken] = useState(() => localStorage.getItem("token"));
-const [profile, setProfile] = useState(null);
+  const [token, setToken] = useState(() => localStorage.getItem("token"));
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
+  const [profile, setProfile] = useState(null);
 
-const login = async (email, password) => {
-    let data;
 
+  const login = async (email, password) => {
     try {
-<<<<<<< HEAD
-      const response = await fetch("http://localhost:3000/api/auth/login", {
-=======
-    const response = await fetch("http://localhost:5000/api/auth/login", {
->>>>>>> 2ec9591 (Versión 0.1.5 (css))
+      const response = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
         headers: {
         "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-        email,
-        password,
-        }),
-    });
-    data = await response.json();
+        body: JSON.stringify({ email, password }),
+      });
+
+
+      const data = await response.json();
+
+
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        setToken(data.token);
+        setUser(data.user);
+        return true;
+      } else {
+        alert(data.error || "Error al iniciar sesión.");
+        return false;
+      }
     } catch (err) {
-    console.error("Hubo un error:", err);
-    alert("Hubo un problema");
-    return;
+      console.error("Error en login:", err);
+      alert("Hubo un problema.");
+      return false;
     }
+  };
 
-    if (data?.error) {
-    alert(data.error);
-    } else {
-      // alert("Authentication successful!");
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("user", data.email);
 
-    setToken(data.token);
-    setUser(data.email);
-    }
-};
-
-<<<<<<< HEAD
-  const register = async (nombre, email, password, direccion, telefono, imgPerfil_url) => {
-    let data;
-
+  const register = async (email, password, nombre, direccion, telefono, imgperfil_url = null) => {
     try {
-      const response = await fetch("http://localhost:3000/api/auth/registrar", {
-=======
-const register = async (email, password) => {
-    let data;
-
-    try {
-    const response = await fetch("http://localhost:5000/api/auth/register", {
->>>>>>> 2ec9591 (Versión 0.1.5 (css))
+      const response = await fetch("http://localhost:5000/api/auth/registrar", {
         method: "POST",
         headers: {
         "Content-Type": "application/json",
         },
         body: JSON.stringify({
-<<<<<<< HEAD
-          nombre,
           email,
           password,
           direccion,
           telefono,
-          imgPerfil_url
-=======
-        email,
-        password,
->>>>>>> 2ec9591 (Versión 0.1.5 (css))
+          imgperfil_url,
         }),
       });
       const text = await response.text();
