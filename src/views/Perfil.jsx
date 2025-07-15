@@ -15,7 +15,7 @@ const Perfil = () => {
         <div className="box-img-form">
             <div>
                 <img
-                    src={profile.imgPerfil_url}
+                    src={profile.imgperfil_url}
                     alt="Foto de perfil"
                     className="rounded-circle"
                     width="120"

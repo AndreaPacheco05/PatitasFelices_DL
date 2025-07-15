@@ -15,21 +15,21 @@ const CrearPublicacion = () => {
   const [descripcion, setDescripcion] = useState("");
   const [categoria, setCategoria] = useState(categorias[0]);
   const [precio, setPrecio] = useState("");
-  const [imagen, setImagen] = useState(null);
-  const [preview, setPreview] = useState(null);
-  const [error, setError] = useState("");
+  const [imagen, setImagen] = useState("");
+/*   const [preview, setPreview] = useState(null);
+ */  const [error, setError] = useState("");
 
-  const handleImagenChange = (e) => {
+ /*  const handleImagenChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setImagen(file);
       setPreview(URL.createObjectURL(file));
     }
-  };
+  }; */
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!titulo || !descripcion || !precio) {
+    if (!titulo || !descripcion || !precio || !imagen) {
       setError("Por favor, completa todos los campos obligatorios.");
       return;
     }
@@ -42,7 +42,7 @@ const CrearPublicacion = () => {
       setError("No estás autenticado");
       return;
     }
-
+  console.log(imagen)
     const response = await fetch("http://localhost:3000/api/cards/publicaciones", {
       method: "POST",
       headers: {
@@ -54,7 +54,7 @@ const CrearPublicacion = () => {
         descripcion,
         precio: Number(precio),
         disponibilidad: true,
-        img_url: "", 
+        img_url: imagen, 
       }),
     });
 
@@ -128,14 +128,18 @@ const CrearPublicacion = () => {
 
         <label className="input-imagen-label">
           Imagen
-          <input type="file" accept="image/*" onChange={handleImagenChange} />
+          <input
+            type="text"
+            onChange={(e) => setImagen(e.target.value)}
+            placeholder="https://example.com/imagen.jpg"
+          />
         </label>
 
-        {preview && (
+        {/* {preview && (
           <div className="preview-imagen">
             <img src={preview} alt="Preview" />
           </div>
-        )}
+        )} */}
 
         {error && <p className="error">{error}</p>}
 

@@ -28,7 +28,7 @@ function Cards({ nombre, imagen, desc, precio, id }) {
          });
     }
   return (
-    <Card style={{ width: "12rem" }}>
+    <Card style={{ width: "12rem"}}>
       <Card.Img variant="top" src={imagen} />
       <Card.Body>
         <Card.Title>{nombre}</Card.Title>
