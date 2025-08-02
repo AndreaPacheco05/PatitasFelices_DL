@@ -5,8 +5,14 @@ export const UserContext = createContext({});
 const UserProvider = ({ children }) => {
   const [token, setToken] = useState(() => localStorage.getItem("token"));
   const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem("user");
-    return savedUser ? JSON.parse(savedUser) : null;
+    try {
+      const savedUser = localStorage.getItem("user");
+      return savedUser ? JSON.parse(savedUser) : null;
+    } catch (e) {
+      console.error("Error al parsear el usuario desde localStorage:", e);
+      localStorage.removeItem("user");
+      return null;
+    }
   });
   const [profile, setProfile] = useState(null);
 
@@ -39,29 +45,29 @@ const UserProvider = ({ children }) => {
     }
   };
 
-  const register = async (email, password, nombre, direccion, telefono, imgperfil_url = null) => {
+  const register = async (nombre, email, password, direccion, telefono, imgperfil_url = null) => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/registrar", {
+      const formData = new FormData();
+      formData.append("nombre", nombre);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("direccion", direccion);
+      formData.append("telefono", telefono);
+      if (imgperfil_url) {
+        formData.append("img", imgperfil_url);
+      }
+
+      const response = await fetch("http://localhost:5000/api/auth/usuarios", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-          nombre,
-          direccion,
-          telefono,
-          imgperfil_url,
-        }),
+        body: formData,
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("token", data.token || "");
         localStorage.setItem("user", JSON.stringify(data.user));
-        setToken(data.token);
+        setToken(data.token || null);
         setUser(data.user);
         return true;
       } else {
@@ -85,14 +91,16 @@ const UserProvider = ({ children }) => {
 
   const getProfile = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/perfil", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `http://localhost:5000/api/auth/usuarios/${user?.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const data = await response.json();
-
       if (response.ok) {
         setProfile(data);
         return data;
@@ -107,13 +115,16 @@ const UserProvider = ({ children }) => {
 
   const updateUser = async (formData) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/usuarios/${profile?.id}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
+      const response = await fetch(
+        `http://localhost:5000/api/auth/usuarios/${profile?.id}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
 
       const data = await response.json();
 
@@ -132,10 +143,10 @@ const UserProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (token) {
+    if (token && user.id) {
       getProfile();
     }
-  }, [token]);
+  }, [token, user]);
 
   return (
     <UserContext.Provider
