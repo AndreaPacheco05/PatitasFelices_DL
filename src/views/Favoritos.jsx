@@ -19,7 +19,7 @@ const Favoritos = () => {
         }
 
         try {
-          const res = await fetch("http://localhost:3000/api/cards/favoritos", {
+          const res = await fetch("http://localhost:5000/api/cards/favoritos", {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -44,8 +44,9 @@ const Favoritos = () => {
   const eliminarFavorito = async (articulo_ID) => {
     try {
       const token = localStorage.getItem("token");
+      console.log("id a eliminar", articulo_ID)
       const res = await fetch(
-        `http://localhost:3000/api/cards/favoritos/${articulo_ID}`,
+        `http://localhost:5000/api/cards/favoritos/${articulo_ID}`,
         {
           method: "DELETE",
           headers: {

@@ -7,7 +7,7 @@ const Tienda = () => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/cards/publicaciones")
+    fetch("http://localhost:5000/api/cards/articulos")
       .then((res) => res.json())
       .then((data) => setProductos(data))
       .catch((err) => console.error("Error al cargar productos:", err));

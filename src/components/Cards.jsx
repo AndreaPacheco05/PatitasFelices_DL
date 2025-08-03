@@ -9,7 +9,7 @@ function Cards({ nombre, imagen, desc, precio, id }) {
     const {agregarFavorito} = useContext(FavoritosContext)
     
   function favFunction() {
-      fetch("http://localhost:3000/api/cards/favoritos", {
+      fetch("http://localhost:5000/api/cards/favoritos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -19,7 +19,6 @@ function Cards({ nombre, imagen, desc, precio, id }) {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log("Favorito agregado:", data);
           alert("Se guardó en favoritos");
         })
         .catch((err) => {

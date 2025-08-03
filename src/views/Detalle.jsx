@@ -9,7 +9,7 @@ const Detalle = () => {
     const obtenerProducto = async () => {
       try {
         const res = await fetch(
-          `http://localhost:3000/api/cards/publicaciones/${id}`
+          `http://localhost:5000/api/cards/articulos/${id}`
         );
         if (!res.ok) {
           throw new Error("Producto no encontrado");
@@ -36,10 +36,11 @@ const Detalle = () => {
                 <h1 className="producto-nombre">{producto.articulos}</h1>
             <p className="producto-desc">
               {producto.descripcion}
-            </p>
+          </p>
+          <p>Ofrecido por: {producto.nombre_usuario}</p>
                 <p className="producto-precio">${producto.precio}</p>
                 <Link to={`/chat/`}>
-                <button className="boton-compra">Comprar ahora</button>
+                <button className="boton-compra">Contactarme</button>
                 </Link>
           </div>
         </main>
