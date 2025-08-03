@@ -41,12 +41,11 @@ const Favoritos = () => {
       fetchFavoritos();
     }, []);
   
-  const eliminarFavorito = async (articulo_ID) => {
+  const eliminarFavorito = async (favoritoID) => {
     try {
       const token = localStorage.getItem("token");
-      console.log("id a eliminar", articulo_ID)
       const res = await fetch(
-        `http://localhost:5000/api/cards/favoritos/${articulo_ID}`,
+        `http://localhost:5000/api/cards/favoritos/${favoritoID}`,
         {
           method: "DELETE",
           headers: {
@@ -57,7 +56,7 @@ const Favoritos = () => {
 
       if (!res.ok) throw new Error("Error al eliminar favorito");
 
-      setFavoritos((prev) => prev.filter((fav) => fav.id !== articulo_ID));
+      setFavoritos((prev) => prev.filter((fav) => fav.favorito_id !== favoritoID));
     } catch (error) {
       console.error(error);
       alert("No se pudo eliminar el favorito");
@@ -71,12 +70,15 @@ const Favoritos = () => {
       <div className="cardContainer">
         {favoritos.map((item) => (
           <Card key={item.id} style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={item.img_url} />
+            <Card.Img
+              variant="top"
+              src={`http://localhost:5000/uploads/${item.img_url}`}
+            />
             <Card.Body>
               <Card.Title>{item.articulo}</Card.Title>
               <Card.Text>Precio: {item.precio}</Card.Text>
               <button
-                onClick={() => eliminarFavorito(item.id)}
+                onClick={() => eliminarFavorito(item.favorito_id)}
                 className="boton-cards"
               >
                 Eliminar
