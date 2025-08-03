@@ -37,16 +37,17 @@ const CrearPublicacion = () => {
     }
 
     const formData = new FormData();
-    formData.append("titulo", titulo);
+    formData.append("articulos", titulo);
     formData.append("descripcion", descripcion);
     formData.append("categoria", categoria);
     formData.append("precio", Number(precio)); // importante: asegurar que es número
+    formData.append("disponibilidad", true)
     if (imagen) {
-      formData.append("imagen", imagen);
+      formData.append("img", imagen);
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/publicacion", {
+      const response = await fetch("http://localhost:5000/api/cards/articulos", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
