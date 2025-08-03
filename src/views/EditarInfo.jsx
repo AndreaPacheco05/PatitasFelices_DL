@@ -28,7 +28,7 @@ const EditarInfo = () => {
     formData.append("telefono", telefono);
     formData.append("direccion", direccion);
     if (password) formData.append("password", password);
-    if (imagen) formData.append("imagen", imagen);
+    if (imagen) formData.append("img", imagen);
 
     try {
       const success = await updateUser(formData);

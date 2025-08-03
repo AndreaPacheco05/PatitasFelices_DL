@@ -116,7 +116,7 @@ const UserProvider = ({ children }) => {
   const updateUser = async (formData) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/auth/usuarios/${profile?.id}`,
+        `http://localhost:5000/api/auth/usuarios/${user?.id}`,
         {
           method: "PUT",
           headers: {
@@ -125,9 +125,9 @@ const UserProvider = ({ children }) => {
           body: formData,
         }
       );
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
         setUser(data);
         localStorage.setItem("user", JSON.stringify(data));

@@ -129,7 +129,7 @@ const Registrar = () => {
               </label>
               <input
                 type="password"
-                id="confirmarPassword"
+                id="confirmarContraseña"
                 className="form-reg"
                 placeholder="***********"
                 value={confirmarContraseña}

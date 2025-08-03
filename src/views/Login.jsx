@@ -19,8 +19,6 @@ const Login = () => {
     setError("");
     setMessage("");
 
-    // debug: console log to ensure handler runs
-    // console.log("submit fired", { email, password, robot });
 
     if (!email || !password) {
       setMessage("Todos los campos son obligatorios.");
