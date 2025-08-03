@@ -8,7 +8,7 @@ const Perfil = () => {
     const navigate = useNavigate();
 
     if (!profile) {
-        return <p>Cargando daatos del usuario...</p>;
+        return <p>Cargando datos del usuario...</p>;
     }
   
     return (

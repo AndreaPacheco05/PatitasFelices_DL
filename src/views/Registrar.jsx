@@ -92,7 +92,7 @@ const Registrar = () => {
                 type="tel"
                 id="telefono"
                 className="form-reg"
-                placeholder="+56 9 12345678"
+                placeholder="912345678"
                 value={telefono}
                 onChange={(e) => setTelefono(e.target.value)}
               />
