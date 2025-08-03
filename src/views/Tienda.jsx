@@ -23,7 +23,7 @@ const Tienda = () => {
               key={producto.id}
               id={producto.id}
               nombre={producto.articulos}
-              imagen={producto.img_url}
+              imagen={`http://localhost:5000/uploads/${producto.img_url}`}
               precio={producto.precio}
               desc={producto.descripcion}
             />

@@ -27,23 +27,23 @@ const Detalle = () => {
   if (error) return <h2>{error}</h2>;
   if (!producto) return <h2>Cargando producto...</h2>;
     return (
- 
-        <main className="producto-detalles">
-          <div className="producto-imagen">
-            <img src={producto.img_url} alt={producto.articulos} />
-          </div>
-          <div className="producto-info">
-                <h1 className="producto-nombre">{producto.articulos}</h1>
-            <p className="producto-desc">
-              {producto.descripcion}
-          </p>
+      <main className="producto-detalles">
+        <div className="producto-imagen">
+          <img
+            src={`http://localhost:5000/uploads/${producto.img_url}`}
+            alt={producto.articulos}
+          />
+        </div>
+        <div className="producto-info">
+          <h1 className="producto-nombre">{producto.articulos}</h1>
+          <p className="producto-desc">{producto.descripcion}</p>
           <p>Ofrecido por: {producto.nombre_usuario}</p>
-                <p className="producto-precio">${producto.precio}</p>
-                <Link to={`/chat/`}>
-                <button className="boton-compra">Contactarme</button>
-                </Link>
-          </div>
-        </main>
+          <p className="producto-precio">${producto.precio}</p>
+          <Link to={`/chat/`}>
+            <button className="boton-compra">Contactarme</button>
+          </Link>
+        </div>
+      </main>
     );
 };
 
