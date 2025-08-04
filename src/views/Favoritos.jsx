@@ -19,11 +19,14 @@ const Favoritos = () => {
         }
 
         try {
-          const res = await fetch("http://localhost:5000/api/cards/favoritos", {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
+          const res = await fetch(
+            "https://patitasfelicesdlback-production.up.railway.app/api/cards/favoritos",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
 
           if (!res.ok) {
             throw new Error("Error al cargar favoritos");
@@ -45,7 +48,7 @@ const Favoritos = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `http://localhost:5000/api/cards/favoritos/${favoritoID}`,
+        `https://patitasfelicesdlback-production.up.railway.app/api/cards/favoritos/${favoritoID}`,
         {
           method: "DELETE",
           headers: {
@@ -72,7 +75,7 @@ const Favoritos = () => {
           <Card key={item.id} style={{ width: "18rem" }}>
             <Card.Img
               variant="top"
-              src={`http://localhost:5000/uploads/${item.img_url}`}
+              src={`https://patitasfelicesdlback-production.up.railway.app/uploads/${item.img_url}`}
             />
             <Card.Body>
               <Card.Title>{item.articulo}</Card.Title>

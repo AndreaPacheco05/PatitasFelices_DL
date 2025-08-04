@@ -18,13 +18,16 @@ const UserProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        "https://patitasfelicesdlback-production.up.railway.app/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       const data = await response.json();
 
@@ -57,10 +60,13 @@ const UserProvider = ({ children }) => {
         formData.append("img", imgperfil_url);
       }
 
-      const response = await fetch("http://localhost:5000/api/auth/usuarios", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://patitasfelicesdlback-production.up.railway.app/api/auth/usuarios",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       const data = await response.json();
 
@@ -92,7 +98,7 @@ const UserProvider = ({ children }) => {
   const getProfile = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/auth/usuarios/${user?.id}`,
+        `https://patitasfelicesdlback-production.up.railway.app/api/auth/usuarios/${user?.id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -116,7 +122,7 @@ const UserProvider = ({ children }) => {
   const updateUser = async (formData) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/auth/usuarios/${user?.id}`,
+        `https://patitasfelicesdlback-production.up.railway.app/api/auth/usuarios/${user?.id}`,
         {
           method: "PUT",
           headers: {

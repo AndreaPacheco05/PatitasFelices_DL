@@ -7,7 +7,9 @@ const Tienda = () => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/cards/articulos")
+    fetch(
+      "https://patitasfelicesdlback-production.up.railway.app/api/cards/articulos"
+    )
       .then((res) => res.json())
       .then((data) => setProductos(data))
       .catch((err) => console.error("Error al cargar productos:", err));
@@ -23,7 +25,7 @@ const Tienda = () => {
               key={producto.id}
               id={producto.id}
               nombre={producto.articulos}
-              imagen={`http://localhost:5000/uploads/${producto.img_url}`}
+              imagen={`https://patitasfelicesdlback-production.up.railway.app/uploads/${producto.img_url}`}
               precio={producto.precio}
               desc={producto.descripcion}
             />

@@ -17,7 +17,7 @@ const Perfil = () => {
         <div className="box-img-form">
           <div>
             <img
-              src={`http://localhost:5000/uploads/${profile.imgperfil_url}`}
+              src={`https://patitasfelicesdlback-production.up.railway.app/uploads/${profile.imgperfil_url}`}
               alt="Foto de perfil"
               className="rounded-circle"
               width="120"

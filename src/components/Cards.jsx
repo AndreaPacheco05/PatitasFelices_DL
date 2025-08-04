@@ -9,14 +9,17 @@ function Cards({ nombre, imagen, desc, precio, id }) {
     const {agregarFavorito} = useContext(FavoritosContext)
     
   function favFunction() {
-      fetch("http://localhost:5000/api/cards/favoritos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify({ articulo_ID: id }),
-      })
+      fetch(
+        "https://patitasfelicesdlback-production.up.railway.app/api/cards/favoritos",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({ articulo_ID: id }),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           alert("Se guardó en favoritos");

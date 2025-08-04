@@ -9,7 +9,7 @@ const Detalle = () => {
     const obtenerProducto = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/cards/articulos/${id}`
+          `https://patitasfelicesdlback-production.up.railway.app/api/cards/articulos/${id}`
         );
         if (!res.ok) {
           throw new Error("Producto no encontrado");
@@ -30,7 +30,7 @@ const Detalle = () => {
       <main className="producto-detalles">
         <div className="producto-imagen">
           <img
-            src={`http://localhost:5000/uploads/${producto.img_url}`}
+            src={`https://patitasfelicesdlback-production.up.railway.app/uploads/${producto.img_url}`}
             alt={producto.articulos}
           />
         </div>
